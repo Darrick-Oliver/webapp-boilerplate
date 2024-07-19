@@ -9,7 +9,8 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "en",
+    fallbackLng: "en-US",
+    supportedLngs: ["en-US"],
     backend: {
       loadPath: `${import.meta.env.VITE_BASE}locales/{{lng}}/{{ns}}.json`,
     },
