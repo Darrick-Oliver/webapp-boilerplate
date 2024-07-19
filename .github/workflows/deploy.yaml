@@ -27,31 +27,29 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
-        working-directory: ./client
         uses: actions/setup-node@v4
         with:
+          cache-dependency-path: "**/package-lock.json"
           node-version: 20
           cache: "npm"
       - name: Install dependencies
-        orking-directory: ./client
         run: npm ci
       - name: Build
-        working-directory: ./client
         run: npm run build
       - name: Setup Pages
-        working-directory: ./client
         uses: actions/configure-pages@v4
       - name: Upload artifact
-        working-directory: ./client
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
           path: "./dist"
       - name: Deploy to GitHub Pages
-        working-directory: ./client
         id: deployment
         uses: actions/deploy-pages@v4
