@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
-  fallbackLng: "en-US",
+  fallbackLng: "en",
 });
 
 export default i18n;
