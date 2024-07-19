@@ -3,10 +3,8 @@ import path from "path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 
-const envDir = `${process.cwd}/env`;
-
 export default ({ mode }: { mode: string }) => {
-  process.env = { ...process.env, ...loadEnv(mode, envDir) };
+  const env = loadEnv(mode, process.cwd());
 
   return defineConfig({
     plugins: [react()],
@@ -15,6 +13,7 @@ export default ({ mode }: { mode: string }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    base: process.env.VITE_BASE,
+    base: env.VITE_BASE,
+    envDir: "./src/environments",
   });
 };
