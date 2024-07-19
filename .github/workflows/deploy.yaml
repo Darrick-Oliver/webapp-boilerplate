@@ -20,10 +20,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-defaults:
-  run:
-    working-directory: ./client
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -35,22 +31,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up Node
+        working-directory: ./client
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: "npm"
       - name: Install dependencies
+        orking-directory: ./client
         run: npm ci
       - name: Build
         working-directory: ./client
         run: npm run build
       - name: Setup Pages
+        working-directory: ./client
         uses: actions/configure-pages@v4
       - name: Upload artifact
+        working-directory: ./client
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
           path: "./dist"
       - name: Deploy to GitHub Pages
+        working-directory: ./client
         id: deployment
         uses: actions/deploy-pages@v4
