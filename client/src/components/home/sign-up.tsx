@@ -79,7 +79,7 @@ export const SignUp = () => {
               />
               <FormField
                 control={form.control}
-                name="username"
+                name="firstName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("first-name-label")}</FormLabel>
@@ -92,7 +92,7 @@ export const SignUp = () => {
               />
               <FormField
                 control={form.control}
-                name="username"
+                name="lastName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t("last-name-label")}</FormLabel>
