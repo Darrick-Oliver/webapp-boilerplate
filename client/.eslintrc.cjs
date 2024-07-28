@@ -23,9 +23,7 @@ module.exports = {
     "tailwindcss/no-custom-classname": [
       "error",
       {
-        config: {
-          prefix: "tw-",
-        },
+        config: require("./tailwind.config.cjs"),
       },
     ],
     "tailwindcss/classnames-order": "error",
